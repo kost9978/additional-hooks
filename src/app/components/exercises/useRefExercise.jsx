@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import CollapseWrapper from "../common/collapse";
 const UseRefExercise = () => {
+    const divRef = useRef({
+        height: 40,
+        width: 60,
+        color: "white",
+        name: "Блок"
+    });
+    const [otherState, setOtherState] = useState(false);
+    const handleClick = () => {
+        divRef.current.height = 150;
+        divRef.current.width = 80;
+        divRef.current.name = "text";
+        // console.log(divRef);
+        setOtherState(!otherState);
+    };
     return (
         <CollapseWrapper title="Упражнение">
             <p className="mt-3">
@@ -14,13 +28,19 @@ const UseRefExercise = () => {
             <div
                 className="bg-primary d-flex flex-row justify-content-center align-items-center rounded"
                 style={{
-                    height: 40,
-                    width: 60,
-                    color: "white"
+                    height: divRef.current.height,
+                    width: divRef.current.width,
+                    color: divRef.current.color
                 }}
             >
-                <small>Блок</small>
+                <small>{divRef.current.name}</small>
+
             </div>
+
+            <button className="secondary mt-2" onClick={handleClick}>
+        Edit
+      </button>
+
         </CollapseWrapper>
     );
 };
