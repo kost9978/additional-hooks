@@ -4,7 +4,7 @@ import SimpleComponent from "../examples/hoc/simpleComponent";
 import withFunctions from "../examples/hoc/withFunctions";
 
 const HocExercise = () => {
-    const ComponentWithHoc = withFunctions(SimpleComponent);
+    const ComponentWithHoc = React.memo(withFunctions(SimpleComponent));
 
     return (
         <CollapseWrapper title="Упражнение">
